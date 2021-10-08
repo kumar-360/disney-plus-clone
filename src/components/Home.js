@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { collection, getDocs } from "firebase/firestore";
+import { useDispatch, useSelector } from 'react-redux';
+import { clearMovies, setMovies } from '../redux/actions/moviesActions';
+import db from '../firebase';
 import ImgSlider from './ImgSlider';
+import Movies from './Movies';
 import Viewers from './Viewers';
 
 const Container = styled.main`
     min-height: calc(100vh - 70px);
-    padding: calc(3.5vw + 5px);
+    padding: 0 calc(3.5vw + 5px);
     position: relative;
     overflow-x: hidden;
     &::before {
@@ -25,6 +30,7 @@ const Home = () => {
         <Container>
             <ImgSlider />
             <Viewers />
+            <Movies />
         </Container>
     );
 };
